@@ -31,28 +31,37 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-indigo-100 to-indigo-200 px-4">
-      <div className="bg-white rounded-3xl shadow-xl w-full max-w-sm p-8 sm:p-10">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Iniciar sesión</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#d30000] to-[#ffcc00] px-4">
+      <div className="bg-[#ffcc00] rounded-3xl shadow-2xl w-full max-w-sm p-8 sm:p-10 border-4 border-[#d30000]">
+        <h2 className="text-4xl font-extrabold text-[#d30000] text-center mb-8 font-sans drop-shadow-lg">
+          🍔 McDonald's Login
+        </h2>
         <form onSubmit={(e) => e.preventDefault()} className="space-y-6">
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="username"
+              className="block text-sm font-bold text-[#d30000] mb-2 tracking-wide"
+            >
               Usuario
             </label>
             <input
-              type="username"
+              type="text"
               id="username"
               name="username"
               value={form.username}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               disabled={loading}
+              className="w-full px-4 py-3 rounded-lg border-2 border-[#d30000] bg-white text-[#d30000] font-semibold placeholder-[#d30000] focus:outline-none focus:ring-4 focus:ring-[#d30000]/70 transition"
+              placeholder="Tu usuario"
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="password"
+              className="block text-sm font-bold text-[#d30000] mb-2 tracking-wide"
+            >
               Contraseña
             </label>
             <input
@@ -62,19 +71,25 @@ const Login = () => {
               value={form.password}
               onChange={handleChange}
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg text-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
               disabled={loading}
+              className="w-full px-4 py-3 rounded-lg border-2 border-[#d30000] bg-white text-[#d30000] font-semibold placeholder-[#d30000] focus:outline-none focus:ring-4 focus:ring-[#d30000]/70 transition"
+              placeholder="••••••••"
             />
           </div>
 
-          {error && <p className="text-red-600 text-sm">{error}</p>}
+          {error && (
+            <p className="text-center text-red-700 font-semibold">{error}</p>
+          )}
 
           <button
             type="button"
             onClick={doLogin}
-            className={`w-full py-2 text-white text-sm font-semibold rounded-lg transition-colors ${loading ? "bg-indigo-400 cursor-not-allowed" : "bg-indigo-600 hover:bg-indigo-700"
-              }`}
             disabled={loading}
+            className={`w-full py-3 rounded-lg font-extrabold text-lg tracking-wide transition ${
+              loading
+                ? "bg-[#f9a825] cursor-not-allowed text-[#a13000]"
+                : "bg-[#d30000] hover:bg-[#a60000] text-yellow-400 shadow-lg"
+            }`}
           >
             {loading ? "Cargando..." : "Iniciar sesión"}
           </button>

@@ -19,6 +19,19 @@ export const users = mysqlTable('users', {
     name: varchar('name', { length: 200 }),
 });
 
+//Tabla categorias 
+
+export const categories = mysqlTable(
+  'categories',
+  {
+    id:   int('id').primaryKey().autoincrement(),
+    name: varchar('name', { length: 100 }).notNull(),
+  },
+  (table) => ({
+    unique_name: uniqueIndex('uq_categories_name').on(table.name),
+  })
+);
+
 // Tabla user_tokens
 export const user_tokens = mysqlTable('user_tokens', {
     id: int('id').primaryKey().autoincrement(),
@@ -34,11 +47,19 @@ export const user_tokens = mysqlTable('user_tokens', {
 });
 
 // Tabla products
-export const products = mysqlTable('products', {
-    id: int('id').primaryKey().autoincrement(),
-    name: varchar('name', { length: 100 }),
-    price: int('price'),
-});
+export const products = mysqlTable(
+  'products',
+  {
+    id:          int('id').primaryKey().autoincrement(),
+    name:        varchar('name', { length: 100 }),
+    price:       int('price'),
+    category_id: int('category_id'),
+  },
+  (table) => ({
+    idx_category: index('idx_products_category').on(table.category_id),
+    fk_category:  uniqueIndex('fk_products_categories').on(table.category_id),
+  })
+);
 
 // Tabla permissions
 export const permissions = mysqlTable('permissions', {

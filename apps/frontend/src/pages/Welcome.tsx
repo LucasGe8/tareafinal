@@ -13,7 +13,7 @@ const Welcome = () => {
         to="/rossmary-villalba"
         className="px-5 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition"
       >
-        Ir a la tarjeta de Rossmary Villalba
+        Ir a la tarjeta de Rossmary Villalba 
       </Link>
      
       <Link

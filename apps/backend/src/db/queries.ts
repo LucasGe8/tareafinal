@@ -4,8 +4,8 @@
 export const productQueries = {
   getAll: 'SELECT * FROM products',
   getById: 'SELECT * FROM products WHERE id = ?',
-  create: 'INSERT INTO products (name, price) VALUES (?, ?)',
-  update: 'UPDATE products SET name = ?, price = ? WHERE id = ?',
+  create: 'INSERT INTO products (name, price, category_id) VALUES (?, ?, ?)',
+  update: 'UPDATE products SET name = ?, price = ?, category_id = ? WHERE id = ?',
   delete: 'DELETE FROM products WHERE id = ?'
 };
 
